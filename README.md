@@ -1,5 +1,5 @@
-# IV     
-![Sin titulo](https://travis-ci.org/rubenjo7/IV.svg?branch=master)
+# IV    
+[![Build Status](https://travis-ci.org/rubenjo7/IV.svg?branch=master)](https://travis-ci.org/rubenjo7/IV)
 
 Repositorio de la asignatura Infraestructura Virtual
 
