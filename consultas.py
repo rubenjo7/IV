@@ -64,15 +64,3 @@ def consulta_por_valor(jugador):
     cur.close()
     con.close()
     return contador
-
-def consulta_para_test(jugador):
-    lista = []
-    con = lite.connect('jugadores.db')
-    cur = con.cursor()
-    par = (jugador, )
-    cur.execute("SELECT * from jugadores where nombre=?", par)
-    for i in cur:
-        lista += i
-    cur.close()
-    con.close()
-    return lista
