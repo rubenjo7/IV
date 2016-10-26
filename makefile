@@ -2,7 +2,7 @@ install:
 	pip install -r requirements.txt
 
 test:
-	python tests.py
+	python test.py
 
 ejecutar:
 	python p_deportivas_bot.py
