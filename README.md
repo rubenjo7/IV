@@ -2,7 +2,7 @@
 
 Repositorio de la asignatura Infraestructura Virtual
 
-<h3>Aplicacion de "Peñas" deportivas Versión 1.0:</h3>
+<h3>Aplicacion de "Peñas" deportivas, Versión 1.0:</h3>
 
 Se va a intentar desarrollar un bot para Telegram. Este bot sera para llevar las estadísticas de una peña deportiva. Se podrán añadir jugadores, tras estar dentro de la peña una serie de jugadores, se podrán sortear equipos seleccionándolos mediante un teclado y tras finalizar el partido se podrán añadir estadísticas del partido, como el resultado, o incluir la cantidad de goles que ha marcado cada jugador. Tras introducir el resultado se repartirán los puntos para cada jugador en función del resultado. También se podrán consultar clasificación por puntos o clasificación por goles.
 
