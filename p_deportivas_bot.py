@@ -18,6 +18,13 @@ def listener(messages): # Con esto, estamos definiendo una función llamada 'lis
     for m in messages: # Por cada dato 'm' en el dato 'messages'
         if m.content_type == 'text': # Filtramos mensajes que sean tipo texto.
             cid = m.chat.id # Almacenaremos el ID de la conversación.
+            archivo = open("sucesos.log", "r+")
+            contenido = archivo.read()
+            final_de_archivo = archivo.tell()
+            archivo.write("Fecha y hora: " + time.strftime("%c") + "\n")
+            archivo.write("[" + str(cid) + "]: " + m.text + "\n") 
+            archivo.seek(final_de_archivo)
+            print "Fecha y hora: " + time.strftime("%c")
             print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
 
 
@@ -56,6 +63,17 @@ def command_mostrar(m):
     else:
         bot.send_message(cid, "Error. Este mensaje no necesita argumentos.")
 
+@bot.message_handler(commands=['Clasificacion'])
+def command_clasificacion(m):
+    cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
+    vacio = m.text[14:20]
+    cadena = ""
+
+    if len(vacio) == 0:
+        cadena = consultas.clasificacion()
+        bot.send_message(cid, cadena)
+    else:
+        bot.send_message(cid, "Error. Este mensaje no necesita argumentos.")
 
 
 @bot.message_handler(commands=['Borrar'])
@@ -77,21 +95,116 @@ def command_sortear(m):
     cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
     sorteo = m.text[9:15]
     lista = []
-
-    if len(sorteo) == 0:
+    lista1 = consultas.getEquipo1()
+    lista2 = consultas.getEquipo2()
+    if len(lista1) != 0 or len(lista2) != 0:
+        bot.send_message(cid, "Error. Ya hay un equipo sorteado, para cancelar sorteo --> /Cancelar_sorteo.")
+    elif len(sorteo) == 0:
         lista = consultas.consultar_jugadores_por_nombre()
         modificaciones.random_sorteo(lista)
         equipo1 = "Equipo 1: \n"
         equipo2 = "Equipo 2: \n"
         for i in range(0, (len(lista)/2)):
+            consultas.aniadeEquipo1(lista[i])
             equipo1 += lista[i]
             equipo1 += "\n"
         bot.send_message(cid, equipo1)
         for i in range((len(lista)/2), len(lista)):
+            consultas.aniadeEquipo2(lista[i])
             equipo2 += lista[i]
             equipo2 += "\n"
         bot.send_message(cid, equipo2)
+    else:
+        bot.send_message(cid, "Error. Este mensaje no necesita argumentos.")
 
+@bot.message_handler(commands=['Resultado'])
+def command_resultado(m):
+    cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
+    resultado = m.text[11:20]
+    lista = []
+    if len(resultado) < 3 or len(resultado) > 5:
+        bot.send_message(cid, "Error. El resultado tiene que tener un tamaño de entre 3 y 5 caracteres.")
+    elif "-" not in resultado:
+        bot.send_message(cid, "Error. El resultado debe ser separado por '-'.")
+    else:
+        tupla = resultado.partition("-")
+        if not tupla[0].isnumeric() or not tupla[2].isnumeric():
+            bot.send_message(cid, "Error. A la derecha o a la izquierda de '-' no se ha ingresado un numero.")
+        else:
+            numero1 = int(float(tupla[0]))
+            numero2 = int(float(tupla[2]))
+            lista1 = consultas.getEquipo1()
+            lista2 = consultas.getEquipo2()
+            if len(lista1) == 0 or len(lista2) == 0:
+                bot.send_message(cid, "Error. Se debe sortear un equipo antes de añadir los puntos.")
+            elif numero1 > numero2:
+                puntos = 0
+                for i in lista1:
+                    #i --> nombre del jugador
+                    puntos = consultas.puntos_jugador(i)
+                    puntos += 3
+                    modificaciones.actualizar_puntos(i, puntos)
+                    puntos = 0
+                consultas.borraEquipo1()
+                puntos = 0
+                for i in lista2:
+                    #i --> nombre del jugador
+                    puntos = consultas.puntos_jugador(i)
+                    puntos += 1
+                    modificaciones.actualizar_puntos(i, puntos)
+                    puntos = 0
+                consultas.borraEquipo2()
+                bot.send_message(cid, "Resultado recibido, añadiendo puntos...\n" + "Pincha aquí para ver la /Clasificacion")
+            elif numero1 < numero2:
+                puntos = 0
+                for i in lista1:
+                    #i --> nombre del jugador
+                    puntos = consultas.puntos_jugador(i)
+                    puntos += 1
+                    modificaciones.actualizar_puntos(i, puntos)
+                    puntos = 0
+                consultas.borraEquipo1()
+                puntos = 0
+                for i in lista2:
+                    #i --> nombre del jugador
+                    puntos = consultas.puntos_jugador(i)
+                    puntos += 3
+                    modificaciones.actualizar_puntos(i, puntos)
+                    puntos = 0
+                consultas.borraEquipo2()
+                bot.send_message(cid, "Resultado recibido, añadiendo puntos...\n" + "Pincha aquí para ver la /Clasificacion")
+            elif numero1 == numero2:
+                puntos = 0
+                for i in lista1:
+                    #i --> nombre del jugador
+                    puntos = consultas.puntos_jugador(i)
+                    puntos += 2
+                    modificaciones.actualizar_puntos(i, puntos)
+                    puntos = 0
+                consultas.borraEquipo1()
+                puntos = 0
+                for i in lista2:
+                    #i --> nombre del jugador
+                    puntos = consultas.puntos_jugador(i)
+                    puntos += 2
+                    modificaciones.actualizar_puntos(i, puntos)
+                    puntos = 0
+                consultas.borraEquipo2()
+                bot.send_message(cid, "Resultado recibido, añadiendo puntos...\n" + "Pincha aquí para ver la /Clasificacion")
+
+@bot.message_handler(commands=['Cancelar_sorteo'])
+def command_cancelar_sorteo(m):
+    cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
+    sorteo = m.text[16:20]
+
+    lista1 = consultas.getEquipo1()
+    lista2 = consultas.getEquipo2()
+    if len(lista1) == 0 or len(lista2) == 0:
+        bot.send_message(cid, "Error. No hay sorteo realizado, para realizar sorteo --> /Sortear.")
+    elif len(sorteo) == 0:
+        consultas.borraEquipo1()
+        consultas.borraEquipo2()
+        bot.send_message(cid, "Sorteo borrado, para realizar un nuevo sorteo --> /Sortear.")
     else:
         bot.send_message(cid, "Error. Este mensaje no necesita argumentos.")
 

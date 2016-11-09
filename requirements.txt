@@ -4,14 +4,15 @@ enum34==1.1.6
 idna==2.1
 ipaddress==1.0.17
 ndg-httpsclient==0.4.2
+pip==8.1.2
+psycopg2==2.6.2
 pyasn1==0.1.9
 pycparser==2.16
 pyOpenSSL==16.2.0
 pyTelegramBotAPI==2.1.7
 requests==2.11.1
+setuptools==28.6.1
 six==1.10.0
 urllib3==1.18
-pip==8.1.2
-setuptools==28.6.1
 wheel==0.30.0a0
 

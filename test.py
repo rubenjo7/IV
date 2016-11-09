@@ -9,6 +9,40 @@ from telebot import types
 class p_deportivas(unittest.TestCase):
 
 	#TESTEAR FUNCIONES PROPIAS
+	def testing_aniade_equipo1(self):
+		consultas.aniadeEquipo1("prueba")
+		if "prueba" in consultas.getEquipo1():
+			numero = consultas.getEquipo1().index("prueba")
+			self.assertEqual("prueba", consultas.getEquipo1()[numero])
+
+	def testing_aniade_equipo2(self):
+		consultas.aniadeEquipo2("prueba")
+		if "prueba" in consultas.getEquipo2():
+			numero = consultas.getEquipo2().index("prueba")
+			self.assertEqual("prueba", consultas.getEquipo2()[numero])
+
+	def testing_borra_equipo1(self):
+		lista = []
+		consultas.borraEquipo1()
+		self.assertEqual(lista, consultas.getEquipo1())
+
+	def testing_borra_equipo2(self):
+		lista = []
+		consultas.borraEquipo2()
+		self.assertEqual(lista, consultas.getEquipo2())
+
+	def testing_getEquipo1(self):
+		lista = []
+		self.assertEqual(type(lista), type(consultas.getEquipo1()))
+
+	def testing_getEquipo2(self):
+		lista = []
+		self.assertEqual(type(lista), type(consultas.getEquipo2()))
+
+	def testing_puntos_jugador(self):
+		i = 0
+		self.assertEqual(type(i), type(consultas.puntos_jugador("Ruben")))
+
 	def testing_por_nombre(self):
 		lista = consultas.consultar_jugadores_por_nombre()
 		for i in range (0, len(lista)):
@@ -25,6 +59,12 @@ class p_deportivas(unittest.TestCase):
 		lista = consultas.consultar()
 		if lista[0] == 1 and lista[1] =="Ruben":
 			self.assertEqual(1, lista[0])
+
+	def testting_clasificacion(self):
+		lista = consultas.clasificacion()
+		if "-" in lista:
+			numero = lista.index("-")
+			self.assertEqual("-", lista[numero])
 
 	def testting_consultas_por_nombre(self):
 		numero = consultas.consulta_por_valor("Ruben")
@@ -43,18 +83,6 @@ class p_deportivas(unittest.TestCase):
 	    msg = types.Message.de_json(jsonstring)
 	    assert msg.text == 'HOLA'
 
-	#PENDIENTE TESTEAR INSERTADO Y BORRADO DE JUGADORES
-	"""def testing_insertado(self):
-		modificaciones.insertar_jugador("yo")
-		lista = consultas.consultar_jugadores_por_nombre()
-		for i in range (0, len(lista)):
-			if lista[i] == "yo":
-				self.assertEqual("yo", lista[i])
-
-	def testing_borrado(self):
-		lista = consultas.consulta_para_test("yo")
-		modificaciones.borrar_jugador(lista[0])
-		self.assertRaises("yo", lista[1])"""
 
 
 if __name__ == '__main__':
