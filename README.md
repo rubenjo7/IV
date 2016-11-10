@@ -134,6 +134,6 @@ Como se trata de un bot de Telegram, necesitamos poner "worker" para que a los 6
 
 Este fichero es el que Heroku ejecuta, por tanto, debemos decirle que ejecute el bot.
 
-A parte, he creado un archivo llamado runtime.txt que contiene la versión de Python que estamos usando.
+A parte, he creado un archivo llamado [runtime.txt](https://github.com/rubenjo7/IV/blob/master/runtime.txt) que contiene la versión de Python que estamos usando.
 
 Una vez que tenemos el bot listo, solo falta comprobar que está lanzado y ejecutándose:

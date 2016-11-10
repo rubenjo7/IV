@@ -18,12 +18,12 @@ def listener(messages): # Con esto, estamos definiendo una función llamada 'lis
     for m in messages: # Por cada dato 'm' en el dato 'messages'
         if m.content_type == 'text': # Filtramos mensajes que sean tipo texto.
             cid = m.chat.id # Almacenaremos el ID de la conversación.
-            archivo = open("sucesos.log", "r+")
-            contenido = archivo.read()
-            final_de_archivo = archivo.tell()
-            archivo.write("Fecha y hora: " + time.strftime("%c") + "\n")
-            archivo.write("[" + str(cid) + "]: " + m.text + "\n") 
-            archivo.seek(final_de_archivo)
+            #archivo = open("sucesos.log", "r+")
+            #contenido = archivo.read()
+            #final_de_archivo = archivo.tell()
+            #archivo.write("Fecha y hora: " + time.strftime("%c") + "\n")
+            #archivo.write("[" + str(cid) + "]: " + m.text + "\n")
+            #archivo.seek(final_de_archivo)
             print "Fecha y hora: " + time.strftime("%c")
             print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
 
