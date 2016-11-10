@@ -136,4 +136,18 @@ Este fichero es el que Heroku ejecuta, por tanto, debemos decirle que ejecute el
 
 A parte, he creado un archivo llamado [runtime.txt](https://github.com/rubenjo7/IV/blob/master/runtime.txt) que contiene la versión de Python que estamos usando.
 
-Una vez que tenemos el bot listo, solo falta comprobar que está lanzado y ejecutándose:
+Una vez que se evaluen los test unitarios de nuestra aplicación en TravisCI en mi caso veremos como nuestra aplicación se despliega en Heroku:
+
+<a href="http://es.tinypic.com?ref=21l0nrp" target="_blank"><img src="http://i66.tinypic.com/21l0nrp.png" border="0" alt="Image and video hosting by TinyPic"></a>
+
+En este momento nuestro bot esta desplegado. Podemos ver los logs introduciendo en la carpeta donde se encuentre nuestro bot el comando:
+
+    heroku logs --tail --ps postgres --app pdeportivasbot
+
+y podemos ver como ejecuta los comandos que queramos sin nigún problema además de estar funcionando el bot:
+
+<a href="http://es.tinypic.com?ref=263ftxk" target="_blank"><img src="http://i63.tinypic.com/263ftxk.png" border="0" alt="Image and video hosting by TinyPic"></a>
+
+Con esto ya tendremos configurado nuestro despliegue atomático y podremos probarlo desde cualquier plataforma de telegram buscando el bot por el nombre de @p_deportivas_bot. Algunas pruebas son:
+
+<a href="http://es.tinypic.com?ref=157ovfd" target="_blank"><img src="http://i68.tinypic.com/157ovfd.png" border="0" alt="Image and video hosting by TinyPic"></a>
