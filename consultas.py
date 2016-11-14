@@ -14,8 +14,12 @@ password_db = os.environ['password_db']
 database_db = os.environ['database_db']
 host_db = os.environ['host_db']
 
+lista_completa = []
 equipo1 = []
 equipo2 = []
+
+def aniadeListaCompleta(jugador):
+    lista_completa.append(jugador)
 
 def aniadeEquipo1(jugador):
     equipo1.append(jugador)
@@ -23,11 +27,17 @@ def aniadeEquipo1(jugador):
 def aniadeEquipo2(jugador):
     equipo2.append(jugador)
 
+def borraListaCompleta():
+    del lista_completa[:]
+
 def borraEquipo1():
     del equipo1[:]
 
 def borraEquipo2():
     del equipo2[:]
+
+def getListaCompleta():
+    return lista_completa
 
 def getEquipo1():
     return equipo1
