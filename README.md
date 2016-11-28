@@ -7,8 +7,8 @@ Repositorio de la asignatura Infraestructura Virtual
 ####Versión 1.3
 
 Bot para Telegram. Este bot será para llevar las estadísticas de una peña deportiva. Se podrán añadir jugadores, tras estar dentro de la peña una serie de jugadores, se podrán sortear equipos seleccionándolos mediante una conversación y tras finalizar el partido se podrán añadir estadísticas del mismo, como el resultado, o incluir la cantidad de goles que ha marcado cada jugador. Tras introducir el resultado se repartirán los puntos para cada jugador en función del resultado. También se podrán consultar clasificación por puntos o clasificación por goles.
-- [Aquí]() se pueden consultar las tareas ya realizadas.
-- [Aquí]() se pueden consultar las funciones de las que dispone el bot.
+- [Aquí](https://github.com/rubenjo7/IV/blob/master/TAREAS.md) se pueden consultar las tareas ya realizadas.
+- [Aquí](https://github.com/rubenjo7/IV/blob/master/FUNCIONAMIENTO.md) se pueden consultar las funciones de las que dispone el bot.
 
 <h3>Realización:</h3>
 
@@ -53,9 +53,9 @@ El makefile que he creado para hacer las instalaciones automáticamente y los te
 
 Tras esto, Travis comienza a instalar los paquetes necesarios y a ejecutar el test.
 
-* [Aquí]() se puede ver los resultados de los test en el ordenador personal y en TRAVIS-CI. Mostrando las diferentes etapas de los test.
+* [Aquí](https://github.com/rubenjo7/IV/blob/master/TRAVIS.md) se puede ver los resultados de los test en el ordenador personal y en TRAVIS-CI. Mostrando las diferentes etapas de los test.
 
-* [Aquí]() se puede consultar como he tenido que crear varias variables de entorno en TRAVIS-CI.
+* [Aquí](https://github.com/rubenjo7/IV/blob/master/TRAVIS.md) se puede consultar como he tenido que crear varias variables de entorno en TRAVIS-CI.
 
 Si nos vamos a [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV) vemos que esta todo correcto porque esta de color verde.
 
@@ -63,14 +63,14 @@ Si nos vamos a [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV) vemos que esta tod
 
 Para este despliegue, me he tenido que dar de alta en la web, vincular mi cuenta de github a esta nueva y a partir de ahí crear una aplicación con una base de datos. La base de datos que he usado ha sido la propia de Heroku (PostgreSQL).
 
-* Consulta [Aquí]() como se creo la base de datos.
+* Consulta [Aquí](https://github.com/rubenjo7/IV/blob/master/HEROKU.md) como se creo la base de datos.
 
 
 Ahora debo acceder a ella desde mi código, para ello uso:
 
     con = psycopg2.connect(database=database_db,user=usuario_db,password=password_db, host=host_db)
 
-* Es necesario declarar variables de entorno en [Heroku]()
+* Es necesario declarar variables de entorno en [Heroku](https://github.com/rubenjo7/IV/blob/master/HEROKU.md)
 
 Ahora nos vamos a Heroku y seleccionamos la casilla de despliegue automático, para que una vez se haga push en git, este actualice automáticamente. Además, seleccionamos la opción de esperar a que los test de integración continua estén pasados, lo cual es bastante conveniente tenerlo activo:
 

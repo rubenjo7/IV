@@ -3,6 +3,7 @@
 ##Primera Versión de test para travis:
 
 Test en ordenado personal:
+
 <img src="http://i66.tinypic.com/f9iop0.png" border="0" alt="Image and video hosting by TinyPic">
 
 Test [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV):
@@ -11,6 +12,7 @@ Test [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV):
 ##Segunda Versión de test para travis:
 
 Test en ordenador personal:
+
 <img src="http://i66.tinypic.com/x4jes4.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
 Test [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV/builds/174616898):
@@ -20,6 +22,7 @@ Test [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV/builds/174616898):
 
 ##Tercera versión de test para travis:
 Test en ordenador personal:
+
 <img src="http://i65.tinypic.com/2ln9wjl.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
 Test [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV/builds/179384099):
