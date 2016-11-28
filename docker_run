@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sudo apt-get -y update
+sudo apt-get install python2.7
+sudo apt-get install -y python-pip
+sudo apt-get install -y python-software-properties
+sudo apt-get install -y build-essential
+sudo apt-get install -y libpq-dev
+sudo apt-get install -y libxml2-dev libxslt-dev  python-dev  python-setuptools
+sudo pip install -r requirements.txt
+
+export token_bot='218678709:AAE0Vl9prBQwf7nH0LrGpmtEgr42oNbSwNs'
+exportexport usuario_db='lblvwwsfzbyzpf'
+exportexportexport password_db='YfarAq3XDYL1ASp8dkViWgmfZA'
+export database_db='dec5mpf1emt4tp'
