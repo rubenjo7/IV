@@ -2,7 +2,7 @@ install:
 	pip install -r requirements.txt
 
 test:
-	python test.py
+	cd p_deportivas_bot && python test_p_deportivas_bot.py
 
 ejecutar:
-	python p_deportivas_bot.py
+	cd p_deportivas_bot && python p_deportivas_bot.py
