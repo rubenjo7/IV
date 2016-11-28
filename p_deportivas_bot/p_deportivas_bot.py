@@ -22,14 +22,17 @@ inserta_goles = 0
 numero1 = -1
 numero2 = -1
 
+lista_comandos = ['/insertar', '/borrar', '/mostrar', '/sortear', '/cancelar_sorteo', '/resultado', '/clasificacion', '/clasificacion_goles', '/clasificacion_puntos', '/start', '/help', '/ayuda']
+
 def listener(messages): # Con esto, estamos definiendo una función llamada 'listener', que recibe como parámetro un dato llamado 'messages'.
+    global lista_comandos
     for m in messages: # Por cada dato 'm' en el dato 'messages'
         if m.content_type == 'text': # Filtramos mensajes que sean tipo texto.
             cid = m.chat.id # Almacenaremos el ID de la conversación.
             mensajes = m.text
             if(mensajes == '/seleccionar' or mensajes == '/parar_seleccionar' or mensajes == '/goles' or mensajes == '/parar_goles' or not mensajes.startswith('/')):
                 seleccion_goles(mensajes, cid)
-            elif not mensajes == '/insertar' and not mensajes == '/borrar' and not mensajes == '/mostrar' and not mensajes == '/sortear' and not mensajes == '/cancelar_sorteo' and not mensajes == '/resultado' and not mensajes == '/clasificacion' and not mensajes == '/clasificacion_goles' and not mensajes == '/clasificacion_puntos':
+            elif (not mensajes in lista_comandos):
                 bot.send_message(cid, "Error. Comando no existente.")
 
             print "Fecha y hora: " + time.strftime("%c")
