@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/python
 
 sudo apt-get -y update
 sudo apt-get install python2.7
