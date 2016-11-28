@@ -1,28 +1,14 @@
 # IV    [![Telegram.me](http://lelb.net/wp-content/uploads/2016/01/telegram-icon-e1453881760594.png)](https://telegram.me/p_deportivas_bot)
-[![Build Status](https://travis-ci.org/rubenjo7/IV.svg?branch=master)](https://travis-ci.org/rubenjo7/IV)
+[![Build Status](https://travis-ci.org/rubenjo7/IV.svg?branch=master)](https://travis-ci.org/rubenjo7/IV) [![Heroku Deploy](https://www.herokucdn.com/deploy/button.svg)](https://pdeportivasbot.herokuapp.com/)
 
 Repositorio de la asignatura Infraestructura Virtual
 
 <h3>Aplicación de "Peñas" deportivas:</h3>
-####Versión 2.0
+####Versión 1.3
 
-Se va a intentar desarrollar un bot para Telegram. Este bot sera para llevar las estadísticas de una peña deportiva. Se podrán añadir jugadores, tras estar dentro de la peña una serie de jugadores, se podrán sortear equipos seleccionándolos mediante un teclado y tras finalizar el partido se podrán añadir estadísticas del partido, como el resultado, o incluir la cantidad de goles que ha marcado cada jugador. Tras introducir el resultado se repartirán los puntos para cada jugador en función del resultado. También se podrán consultar clasificación por puntos o clasificación por goles.
-
-###Tareas ya realizadas:
-
-- Inserción de jugadores.
-- Borrado de jugadores por ID.
-- Mostrar jugadores ya insertados.
-- Sortear equipos aleatorios con los jugadores insertados.
-- Anular Sorteo.
-- Insertar Resultado.
-- Consultar la clasificación
-
-###Tareas por realizar:
-
-- Inserción de goleadores por partido.
-- Creación de clasificación de goleadores.
-- Modo selección de jugadores para sorteo.
+Bot para Telegram. Este bot será para llevar las estadísticas de una peña deportiva. Se podrán añadir jugadores, tras estar dentro de la peña una serie de jugadores, se podrán sortear equipos seleccionándolos mediante una conversación y tras finalizar el partido se podrán añadir estadísticas del mismo, como el resultado, o incluir la cantidad de goles que ha marcado cada jugador. Tras introducir el resultado se repartirán los puntos para cada jugador en función del resultado. También se podrán consultar clasificación por puntos o clasificación por goles.
+- [Aquí]() se pueden consultar las tareas ya realizadas.
+- [Aquí]() se pueden consultar las funciones de las que dispone el bot.
 
 <h3>Realización:</h3>
 
@@ -37,20 +23,10 @@ Para la realización de la practica, en principio necesitare:
 * Heroku.
 * Monitorización.
 * TravisCI para realizar test continuos.
+* DockerHub, para permitir a los usuarios compartir las imágenes construidas.
 
 En principio pongo los que creo que voy a utilizar, esta lista se ampliará si necesitase usar algo más.
 
-###Funcionamiento actual:
-
-Actualmente el bot integra 4 funciones, como ya he dicho anteriormente:
-
-  * _/Insertar nombre_ : Inserta a un jugador en la base de datos. Por supuesto, se realiza una comprobación de errores para que no exista ya ese nombre o que se ponga un nombre, entre otros. Esta función solo podrá hacerla el administrador de la peña en una versión futura.
-  * _/Borrar id_ : Borra a un jugador. Esta función solo podrá hacerla el administrador de la peña en una versión futura. También tiene su comprobación de errores.
-  * _/Mostrar_ : Muestra id y nombre de los jugadores que hay en la base de datos actualmente. Esta función la podrá realizar cualquier usuario.
-  * _/Sortear_ : Sortea dos equipos de manera aleatoria entre todos los jugadores insertados. Esta función solo puede hacerla el administrador de la peña.
-  * _/Cancelar_sorteo_ : Cancela el sorteo, en caso de que no haya ninguno, da el aviso de que no existe ninguno.
-  * _/Resultado_ : Se inserta un resultado en formato "X-X", siendo X un número, por supuesto, si no sigue ese formato manda un mensaje de error al usuario.
-  * _/Clasificacion_ : Muestra la clasificación en función de los puntos que tiene cada jugador, en caso de empate van por orden de lista. En versiones futuras, se añadiran los goles a esta clasificación.
 
 ###Integración continua:
 
@@ -75,62 +51,40 @@ El makefile que he creado para hacer las instalaciones automáticamente y los te
     ejecutar:
     	python p_deportivas_bot.py
 
-Tras esto, Travis comienza a instalar los paquetes necesiarios y a ejecutar el test, que anteriormente probé con el siguiente resultado:
+Tras esto, Travis comienza a instalar los paquetes necesarios y a ejecutar el test.
 
-<img src="http://i66.tinypic.com/f9iop0.png" border="0" alt="Image and video hosting by TinyPic">
+* [Aquí]() se puede ver los resultados de los test en el ordenador personal y en TRAVIS-CI. Mostrando las diferentes etapas de los test.
 
-Si nos vamos a [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV) vemos que esta todo correcto porque esta de color verde:
+* [Aquí]() se puede consultar como he tenido que crear varias variables de entorno en TRAVIS-CI.
 
-<img src="http://i65.tinypic.com/2r2btk3.png" border="0" alt="Image and video hosting by TinyPic">
-
-####Mejoras:
-
-He ampliado mi proyecto, y como es lógico, he creado más funciones que ha que testear:
-
-1. Test en ordenador personal:
-
-<a href="http://es.tinypic.com?ref=x4jes4" target="_blank"><img src="http://i66.tinypic.com/x4jes4.png" border="0" alt="Image and video hosting by TinyPic"></a>
-
-2. Como mejora, y para tener algo más de seguridad, he tenido que crearme varias variables de entorno, que las inserto del siguiente modo:
-
-<a href="http://es.tinypic.com?ref=d7051" target="_blank"><img src="http://i64.tinypic.com/d7051.png" border="0" alt="Image and video hosting by TinyPic"></a>
-
-3. Y como es lógico los test en [Travis](https://travis-ci.org/rubenjo7/IV/builds/174616898) vuelven a pasarse:
-
-<a href="http://es.tinypic.com?ref=2z8x07t" target="_blank"><img src="http://i63.tinypic.com/2z8x07t.png" border="0" alt="Image and video hosting by TinyPic"></a>
-
-<a href="http://es.tinypic.com?ref=2wdosq9" target="_blank"><img src="http://i64.tinypic.com/2wdosq9.png" border="0" alt="Image and video hosting by TinyPic"></a>
+Si nos vamos a [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV) vemos que esta todo correcto porque esta de color verde.
 
 ###Despliegue en Heroku:
 
 Para este despliegue, me he tenido que dar de alta en la web, vincular mi cuenta de github a esta nueva y a partir de ahí crear una aplicación con una base de datos. La base de datos que he usado ha sido la propia de Heroku (PostgreSQL).
 
-La base de datos que he creado a sido la siguiente, desde mi terminal:
+* Consulta [Aquí]() como se creo la base de datos.
 
-<a href="http://es.tinypic.com?ref=110x94y" target="_blank"><img src="http://i63.tinypic.com/110x94y.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
 Ahora debo acceder a ella desde mi código, para ello uso:
 
     con = psycopg2.connect(database=database_db,user=usuario_db,password=password_db, host=host_db)
 
-
-Como se ve, me he declarado variables locales para la base de datos, host, usuario y contraseña, luego en Heroku, tenemos que declararlas también (Aquí he difuminado los datos por temas de seguridad):
-
-<a href="http://es.tinypic.com?ref=2rrwa34" target="_blank"><img src="http://i65.tinypic.com/2rrwa34.png" border="0" alt="Image and video hosting by TinyPic"></a>
+* Es necesario declarar variables de entorno en [Heroku]()
 
 Ahora nos vamos a Heroku y seleccionamos la casilla de despliegue automático, para que una vez se haga push en git, este actualice automáticamente. Además, seleccionamos la opción de esperar a que los test de integración continua estén pasados, lo cual es bastante conveniente tenerlo activo:
 
-<a href="http://es.tinypic.com?ref=20qgpyf" target="_blank"><img src="http://i68.tinypic.com/20qgpyf.png" border="0" alt="Image and video hosting by TinyPic"></a>
+<img src="http://i68.tinypic.com/20qgpyf.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
 Otra manera de hacerlo es de forma manual, porque a veces tarde más de lo esperado:
 
-<a href="http://es.tinypic.com?ref=1zzo006" target="_blank"><img src="http://i63.tinypic.com/1zzo006.png" border="0" alt="Image and video hosting by TinyPic"></a>
+<img src="http://i63.tinypic.com/1zzo006.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
-Para el despliegue necesitamos un fichero Procfile:
+Para el despliegue necesitamos un fichero Procfile, cuyo contenido es el siguiente:
 
     worker: python p_deportivas_bot.py
 
-Como se trata de un bot de Telegram, necesitamos poner "worker" para que a los 60 segundos sin recibir peticiones no se descative.
+Como se trata de un bot de Telegram, necesitamos poner "worker" para que a los 60 segundos sin recibir peticiones no se desactive.
 
 Este fichero es el que Heroku ejecuta, por tanto, debemos decirle que ejecute el bot.
 
@@ -138,7 +92,7 @@ A parte, he creado un archivo llamado [runtime.txt](https://github.com/rubenjo7/
 
 Una vez que se evaluen los test unitarios de nuestra aplicación en TravisCI en mi caso veremos como nuestra aplicación se despliega en Heroku:
 
-<a href="http://es.tinypic.com?ref=21l0nrp" target="_blank"><img src="http://i66.tinypic.com/21l0nrp.png" border="0" alt="Image and video hosting by TinyPic"></a>
+<img src="http://i66.tinypic.com/21l0nrp.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
 En este momento nuestro bot esta desplegado. Podemos ver los logs introduciendo en la carpeta donde se encuentre nuestro bot el comando:
 
@@ -146,8 +100,9 @@ En este momento nuestro bot esta desplegado. Podemos ver los logs introduciendo 
 
 y podemos ver como ejecuta los comandos que queramos sin nigún problema además de estar funcionando el bot:
 
-<a href="http://es.tinypic.com?ref=263ftxk" target="_blank"><img src="http://i63.tinypic.com/263ftxk.png" border="0" alt="Image and video hosting by TinyPic"></a>
+<img src="http://i63.tinypic.com/263ftxk.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
-Con esto ya tendremos configurado nuestro despliegue atomático y podremos probarlo desde cualquier plataforma de telegram buscando el bot por el nombre de @p_deportivas_bot. Algunas pruebas son:
 
-<a href="http://es.tinypic.com?ref=157ovfd" target="_blank"><img src="http://i68.tinypic.com/157ovfd.png" border="0" alt="Image and video hosting by TinyPic"></a>
+Con esto ya tendremos configurado nuestro despliegue atomático y podremos probarlo desde cualquier plataforma de telegram buscando el bot por el nombre de @p_deportivas_bot.
+
+###
