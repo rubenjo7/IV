@@ -10,4 +10,5 @@ ENV token_bot='218678709:AAE0Vl9prBQwf7nH0LrGpmtEgr42oNbSwNs'
 ENV usuario_db='lblvwwsfzbyzpf'
 ENV password_db='YfarAq3XDYL1ASp8dkViWgmfZA'
 ENV database_db='dec5mpf1emt4tp'
+ENV host_db='ec2-54-75-246-255.eu-west-1.compute.amazonaws.com'
 CMD cd /home/IV && cd p_deportivas_bot && python p_deportivas_bot.py
