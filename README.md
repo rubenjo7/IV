@@ -105,4 +105,32 @@ y podemos ver como ejecuta los comandos que queramos sin nigún problema además
 
 Con esto ya tendremos configurado nuestro despliegue atomático y podremos probarlo desde cualquier plataforma de telegram buscando el bot por el nombre de @p_deportivas_bot.
 
-###
+###Entorno de pruebas
+
+Lo primero ha sido preparar la imagen con el bot y sus dependencias instaladas para que la ejecución de @p_deportivas_bot sea posible. Esto lo he realizado mediante un fichero [Dockerfile](https://github.com/rubenjo7/IV/blob/master/Dockerfile). En este fichero se especifican las acciones a realizar para preparar la imagen. En mi caso, le indico que se base en una imagen Ubuntu oficial, que actualice los repositorios, que instale algunos paquetes necesarios de Python, se descargue el repositorio de IV, en el cual se encuentrea el bot además, se hace referencia a un script [docker_run](https://github.com/rubenjo7/IV/blob/master/docker_run) que instalará todo lo necesario para preparar el contenedor y llamará al archivo Makefile que instalará todos los requisitos que necesita el bot.
+
+El primer paso ha sido, una vez creado dicho fichero, unir la cuenta de DockerHub con la de GitHub.
+
+Tras esto, pulsamos en _Create_ y después en _Automated Build_ y seleccionamos el repositorio de nuestra aplicación. Tras esto, nos aparecerán los ajustes que tendrá la construcción automática en la que escribimos una breve descripción de la imagen que crearemos.
+
+<img src="http://i67.tinypic.com/m9xhr8.png" border="0" alt="Image and video hosting by TinyPic"></a>
+
+Tras pulsar en Create, falta indicarle que se automatizará la construcción a partir de push sobre la rama. Hay que pulsar en el botón Trigger en el menú Building Settings:
+
+<img src="http://i68.tinypic.com/15ds806.png" border="0" alt="Image and video hosting by TinyPic"></a>
+
+La página de DockerHub con mi imagen se encuentra [aquí](https://hub.docker.com/r/rubenjo7/iv/).
+
+####Instalación del contenerdor:
+
+Para instalar el contenedor tan solo deberemos de ejecutar el siguiente comando y el contenedor comenzará a instalarse automáticamente:
+
+<img src="http://i63.tinypic.com/6h88lz.png" border="0" alt="Image and video hosting by TinyPic"></a>
+
+Una vez instalado el contenedor lo arrancamos:
+
+<img src="http://i68.tinypic.com/2s782fo.png" border="0" alt="Image and video hosting by TinyPic"></a>
+
+Una vez ha arrancado el contenedor debemos ejecutar el bot de la siguiente forma (Aquí se pueden ver algunas peticiones realizadas, para ver que efectivamente funciona):
+
+<img src="http://i67.tinypic.com/1hvxv8.png" border="0" alt="Image and video hosting by TinyPic"></a>
