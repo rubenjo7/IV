@@ -7,6 +7,7 @@ RUN cd /home && git clone https://github.com/rubenjo7/IV.git
 #COPY ./ /home/IV
 RUN cd /home/IV && chmod a+x docker_run
 RUN cd /home/IV && ./docker_run
+RUN pip install --upgrade pip
 
 ENV token_bot='218678709:AAE0Vl9prBQwf7nH0LrGpmtEgr42oNbSwNs'
 ENV usuario_db='lblvwwsfzbyzpf'
