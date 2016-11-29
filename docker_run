@@ -3,7 +3,6 @@
 sudo apt-get -y update
 sudo apt-get install python2.7
 sudo apt-get install -y python-pip
-pip install -r requirements.txt
 sudo apt-get install -y python-software-properties
 sudo apt-get install -y build-essential
 sudo apt-get install -y libpq-dev
@@ -11,7 +10,8 @@ sudo apt-get install -y libxml2-dev libxslt-dev  python-dev  python-setuptools
 sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-imaging python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev
 sudo easy_install greenlet
 sudo easy_install gevent
-
+sudo pip install --upgrade pip
+sudo pip install -r requirements.txt
 export token_bot='218678709:AAE0Vl9prBQwf7nH0LrGpmtEgr42oNbSwNs'
 exportexport usuario_db='lblvwwsfzbyzpf'
 exportexportexport password_db='YfarAq3XDYL1ASp8dkViWgmfZA'
