@@ -7,8 +7,8 @@ Repositorio de la asignatura Infraestructura Virtual
 ####Versión 1.3
 
 Bot para Telegram. Este bot será para llevar las estadísticas de una peña deportiva. Se podrán añadir jugadores, tras estar dentro de la peña una serie de jugadores, se podrán sortear equipos seleccionándolos mediante una conversación y tras finalizar el partido se podrán añadir estadísticas del mismo, como el resultado, o incluir la cantidad de goles que ha marcado cada jugador. Tras introducir el resultado se repartirán los puntos para cada jugador en función del resultado. También se podrán consultar clasificación por puntos o clasificación por goles.
-- [Aquí](https://github.com/rubenjo7/IV/blob/master/TAREAS.md) se pueden consultar las tareas ya realizadas.
-- [Aquí](https://github.com/rubenjo7/IV/blob/master/FUNCIONAMIENTO.md) se pueden consultar las funciones de las que dispone el bot.
+- [Aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/TAREAS.md#tareas-del-bot) se pueden consultar las tareas ya realizadas.
+- [Aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/FUNCIONAMIENTO.md#funcionamiento-de-peñas-deportivas-) se pueden consultar las funciones de las que dispone el bot.
 
 <h3>Realización:</h3>
 
@@ -53,9 +53,9 @@ El makefile que he creado para hacer las instalaciones automáticamente y los te
 
 Tras esto, Travis comienza a instalar los paquetes necesarios y a ejecutar el test.
 
-* [Aquí](https://github.com/rubenjo7/IV/blob/master/TRAVIS.md) se puede ver los resultados de los test en el ordenador personal y en TRAVIS-CI. Mostrando las diferentes etapas de los test.
+* [Aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/TRAVIS.md#tercera-versión-de-test-para-travis) se puede ver los resultados de los test en el ordenador personal y en TRAVIS-CI. Mostrando las diferentes etapas de los test.
 
-* [Aquí](https://github.com/rubenjo7/IV/blob/master/TRAVIS.md) se puede consultar como he tenido que crear varias variables de entorno en TRAVIS-CI.
+* [Aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/TRAVIS.md#varibles-de-entorno-en-travis) se puede consultar como he tenido que crear varias variables de entorno en TRAVIS-CI.
 
 Si nos vamos a [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV) vemos que esta todo correcto porque esta de color verde.
 
@@ -63,14 +63,14 @@ Si nos vamos a [TRAVIS-CI](https://travis-ci.org/rubenjo7/IV) vemos que esta tod
 
 Para este despliegue, me he tenido que dar de alta en la web, vincular mi cuenta de github a esta nueva y a partir de ahí crear una aplicación con una base de datos. La base de datos que he usado ha sido la propia de Heroku (PostgreSQL).
 
-* Consulta [Aquí](https://github.com/rubenjo7/IV/blob/master/HEROKU.md) como se creo la base de datos.
+* Consulta [Aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/HEROKU.md#creación-base-de-datos) como se creo la base de datos.
 
 
 Ahora debo acceder a ella desde mi código, para ello uso:
 
     con = psycopg2.connect(database=database_db,user=usuario_db,password=password_db, host=host_db)
 
-* Es necesario declarar variables de entorno en [Heroku](https://github.com/rubenjo7/IV/blob/master/HEROKU.md)
+* Es necesario declarar variables de entorno en [Heroku](https://github.com/rubenjo7/IV/blob/master/Documentacion/HEROKU.md#variables-de-entorno-en-heroku)
 
 Ahora nos vamos a Heroku y seleccionamos la casilla de despliegue automático, para que una vez se haga push en git, este actualice automáticamente. Además, seleccionamos la opción de esperar a que los test de integración continua estén pasados, lo cual es bastante conveniente tenerlo activo:
 
@@ -107,7 +107,7 @@ Con esto ya tendremos configurado nuestro despliegue atomático y podremos proba
 
 ###Entorno de pruebas
 
-Lo primero ha sido preparar la imagen con el bot y sus dependencias instaladas para que la ejecución de @p_deportivas_bot sea posible. Esto lo he realizado mediante un fichero [Dockerfile](https://github.com/rubenjo7/IV/blob/master/Dockerfile). En este fichero se especifican las acciones a realizar para preparar la imagen. En mi caso, le indico que se base en una imagen Ubuntu oficial, que actualice los repositorios, que instale algunos paquetes necesarios de Python, se descargue el repositorio de IV, en el cual se encuentrea el bot además, se hace referencia a un script [docker_run](https://github.com/rubenjo7/IV/blob/master/docker_run) que instalará todo lo necesario para preparar el contenedor y llamará al archivo Makefile que instalará todos los requisitos que necesita el bot.
+Lo primero ha sido preparar la imagen con el bot y sus dependencias instaladas para que la ejecución de @p_deportivas_bot sea posible. Esto lo he realizado mediante un fichero [Dockerfile](https://github.com/rubenjo7/IV/blob/master/Dockerfile). En este fichero se especifican las acciones a realizar para preparar la imagen. En mi caso, le indico que se base en una imagen Ubuntu oficial, que actualice los repositorios, que instale algunos paquetes necesarios de Python, se descargue el repositorio de IV, en el cual se encuentra el bot además, de instalar los componentes de requirements.txt (requisitos que necesita el bot).
 
 El primer paso ha sido, una vez creado dicho fichero, unir la cuenta de DockerHub con la de GitHub.
 
@@ -121,4 +121,4 @@ Tras pulsar en Create, falta indicarle que se automatizará la construcción a p
 
 La página de DockerHub con mi imagen se encuentra [aquí](https://hub.docker.com/r/rubenjo7/iv/).
 
-- La instalación del contenedor en nuestro ordenador personal la podemos ver [aquí]().
+- La instalación del contenedor en nuestro ordenador personal la podemos ver [aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/DOCKER.md#instalación-del-contenerdor).
