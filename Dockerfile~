@@ -20,13 +20,12 @@ RUN apt-get install -y git
 RUN git clone https://github.com/rubenjo7/IV.git
 
 #Instalamos herramientas necesarias
-RUN sudo apt-get install -y python-setuptools
-RUN sudo apt-get -y install python-dev
-RUN sudo apt-get -y install build-essential
-RUN sudo apt-get -y install python-psycopg2
-RUN sudo apt-get -y install libpq-dev
-RUN sudo easy_install pip
-RUN sudo pip install --upgrade pip
-RUN cd IV/ && make install
-
-CMD cd IV/p_deportivas_bot && python p_deportivas_bot.py
+RUN apt-get -y update
+RUN cd /home/IV && chmod a+x docker_run
+RUN cd /home/IV && ./docker_run
+ENV token_bot='218678709:AAE0Vl9prBQwf7nH0LrGpmtEgr42oNbSwNs'
+ENV usuario_db='lblvwwsfzbyzpf'
+ENV password_db='YfarAq3XDYL1ASp8dkViWgmfZA'
+ENV database_db='dec5mpf1emt4tp'
+ENV host_db='ec2-54-75-246-255.eu-west-1.compute.amazonaws.com'
+CMD cd /home/IV && cd p_deportivas_bot && python p_deportivas_bot.py
