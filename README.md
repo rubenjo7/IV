@@ -121,16 +121,4 @@ Tras pulsar en Create, falta indicarle que se automatizará la construcción a p
 
 La página de DockerHub con mi imagen se encuentra [aquí](https://hub.docker.com/r/rubenjo7/iv/).
 
-####Instalación del contenerdor:
-
-Para instalar el contenedor tan solo deberemos de ejecutar el siguiente comando y el contenedor comenzará a instalarse automáticamente:
-
-<img src="http://i63.tinypic.com/6h88lz.png" border="0" alt="Image and video hosting by TinyPic"></a>
-
-Una vez instalado el contenedor lo arrancamos:
-
-<img src="http://i68.tinypic.com/2s782fo.png" border="0" alt="Image and video hosting by TinyPic"></a>
-
-Una vez ha arrancado el contenedor debemos ejecutar el bot de la siguiente forma (Aquí se pueden ver algunas peticiones realizadas, para ver que efectivamente funciona):
-
-<img src="http://i67.tinypic.com/1hvxv8.png" border="0" alt="Image and video hosting by TinyPic"></a>
+- La instalación del contenedor en nuestro ordenador personal la podemos ver [aquí]().
