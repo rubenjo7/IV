@@ -107,18 +107,10 @@ Con esto ya tendremos configurado nuestro despliegue atomático y podremos proba
 
 ###Entorno de pruebas
 
-Lo primero ha sido preparar la imagen con el bot y sus dependencias instaladas para que la ejecución de @p_deportivas_bot sea posible. Esto lo he realizado mediante un fichero [Dockerfile](https://github.com/rubenjo7/IV/blob/master/Dockerfile). En este fichero se especifican las acciones a realizar para preparar la imagen. En mi caso, le indico que se base en una imagen Ubuntu oficial, que actualice los repositorios, que instale algunos paquetes necesarios de Python, se descargue el repositorio de IV, en el cual se encuentra el bot además, de instalar los componentes de requirements.txt (requisitos que necesita el bot).
+- Lo primero ha sido preparar la imagen con el bot y sus dependencias instaladas para que la ejecución de @p_deportivas_bot sea posible. Esto lo he realizado mediante un fichero [Dockerfile](https://github.com/rubenjo7/IV/blob/master/Dockerfile).
 
-El primer paso ha sido, una vez creado dicho fichero, unir la cuenta de DockerHub con la de GitHub.
+- El segundo paso ha sido, una vez creado dicho fichero, unir la cuenta de DockerHub con la de GitHub y la creación del contenedor, este proceso se puede ver [aquí](https://github.com/rubenjo7/IV/tree/Documentacion#entorno-de-pruebas).
 
-Tras esto, pulsamos en _Create_ y después en _Automated Build_ y seleccionamos el repositorio de nuestra aplicación. Tras esto, nos aparecerán los ajustes que tendrá la construcción automática en la que escribimos una breve descripción de la imagen que crearemos.
-
-<img src="http://i67.tinypic.com/m9xhr8.png" border="0" alt="Image and video hosting by TinyPic"></a>
-
-Tras pulsar en Create, falta indicarle que se automatizará la construcción a partir de push sobre la rama. Hay que pulsar en el botón Trigger en el menú Building Settings:
-
-<img src="http://i68.tinypic.com/15ds806.png" border="0" alt="Image and video hosting by TinyPic"></a>
-
-La página de DockerHub con mi imagen se encuentra [aquí](https://hub.docker.com/r/rubenjo7/iv/).
+- La página de DockerHub con mi imagen se encuentra [aquí](https://hub.docker.com/r/rubenjo7/iv/).
 
 - La instalación del contenedor en nuestro ordenador personal la podemos ver [aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/DOCKER.md#instalación-del-contenerdor).
