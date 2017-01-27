@@ -1,0 +1,44 @@
+- hosts: default
+  sudo: yes
+  remote_user: ruben
+  vars:
+      token_bot: "{{ lookup('env','token_bot') }}"
+      usuario_db: "{{ lookup('env','usuario_db') }}"
+      password_db: "{{ lookup('env','password_db') }}"
+      database_db: "{{ lookup('env','database_db') }}"
+      host_db: "{{ lookup('env','host_db') }}"
+  tasks:
+  - name: Actualizar sistema
+    apt: update_cache=yes upgrade=dist
+  - name: Instalar git
+    apt: name=git state=present
+  - name: Descargar repositorio
+    git: repo=https://github.com/rubenjo7/IV.git dest=/home/ruben/IV clone=yes force=yes
+  - name: Instalar pip
+    apt: name=python-pip state=present
+  - name: Instalar supervisor
+    apt: name=supervisor state=present
+  - name: Configurar programa para supervisor
+    template: src=p_deportivas_bot.conf dest=/etc/supervisor/conf.d/p_deportivas_bot.conf
+  - name: Instalar python-setuptools
+    apt: name=python-setuptools state=present
+  - name: Instalar python-dev
+    apt: name=python-dev state=present
+  - name: Instalar build-essential
+    apt: name=build-essential state=present
+  - name: Instalar libgdbm-dev
+    apt: name=libgdbm-dev state=present
+  - name: Instalar build essential
+    apt: name=libncurses5-dev state=present
+  - name: Instalar build essential
+    apt: name=postgresql state=present
+  - name: Instalar build essential
+    apt: name=postgresql-contrib state=present
+  - name: Instalar build essential
+    apt: name=libpq-dev state=present
+  - name: Actualizar pip
+    command: pip install -U pip
+  - name: Instalar requirements
+    command: sudo pip install -r IV/requirements.txt
+  - name: Ejecutar supervisor
+    service: name=supervisor state=started
