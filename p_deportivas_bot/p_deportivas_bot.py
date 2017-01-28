@@ -36,7 +36,7 @@ def listener(messages): # Con esto, estamos definiendo una función llamada 'lis
             #print "Fecha y hora: " + time.strftime("%c")
             #print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
             #PARA AZURE
-            outfile = open('log/logs.txt', 'w')
+            outfile = open('log/logs.txt', 'a')
             outfile.write( "Fecha y hora: " + time.strftime("%c") + "\n")
             outfile.write( "[" + str(cid) + "]: " + m.text + "\n") # Y haremos que imprima algo parecido a esto -> [52033876]: /start
             outfile.close()

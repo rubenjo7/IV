@@ -20,6 +20,8 @@
     apt: name=supervisor state=present
   - name: Configura programa para supervisor
     template: src=p_deportivas_bot.conf dest=/etc/supervisor/conf.d/p_deportivas_bot.conf
+  - name: Creamos y damos permisos a archivo logs.txt
+    file: path=/home/ruben/IV/log/logs.txt state=touch mode="u+rwx,g+rwx,o+rwx"
   - name: Instalar python-setuptools
     apt: name=python-setuptools state=present
   - name: Instalar python-dev
