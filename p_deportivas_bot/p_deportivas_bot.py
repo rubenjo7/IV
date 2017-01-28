@@ -32,12 +32,14 @@ def listener(messages): # Con esto, estamos definiendo una función llamada 'lis
             mensajes = m.text
             if(mensajes == '/seleccionar' or mensajes == '/parar_seleccionar' or mensajes == '/goles' or mensajes == '/parar_goles' or not mensajes.startswith('/')):
                 seleccion_goles(mensajes, cid)
-            elif (not mensajes in lista_comandos):
-                bot.send_message(cid, "Error. Comando no existente.")
-
-            print "Fecha y hora: " + time.strftime("%c")
-            print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
-
+            #PARA HEROKU
+            #print "Fecha y hora: " + time.strftime("%c")
+            #print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
+            #PARA AZURE
+            outfile = open('log/logs.txt', 'w')
+            outfile.write( "Fecha y hora: " + time.strftime("%c") + "\n")
+            outfile.write( "[" + str(cid) + "]: " + m.text + "\n") # Y haremos que imprima algo parecido a esto -> [52033876]: /start
+            outfile.close()
 
 def seleccion_goles(mensajes, cid):
     global en_conversacion_seleccion
