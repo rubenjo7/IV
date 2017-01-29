@@ -31,7 +31,7 @@ Una vez hacemos este paso nos aparece un archivo Vagrantfile, que tendremos que 
 
 * azure.vm_password = ENV['clave'] --> Clave de acceso para el usuario de la máquina, protegida mediante variables de entorno.
 
-azure.vm_location = "Central US" # e.g., West US --> Ubicación de la máquina virtual.
+* azure.vm_location = "Central US" # e.g., West US --> Ubicación de la máquina virtual.
 
 * config.ssh.username = ENV['usuario_ssh'] --> Usuario para la conexión por ssh, protegido por viables de entorno, más adelante se mostraran usos de los mismos.
 
