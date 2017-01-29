@@ -140,9 +140,9 @@ Su uso es el siguiente:
 
     fab -p [CONTRASEÑA] -H [USUARIO]@[HOST] [ORDEN]
 
-En el siguiente [enlace]() se pueden ver algunas pruebas realizadas.
+En el siguiente [enlace](https://github.com/rubenjo7/IV/blob/master/Documentacion/FABRIC.md#pruebas) se pueden ver algunas pruebas realizadas.
 
-El contenido del archivo [Fabric](https://github.com/rubenjo7/IV/blob/master/fabfile.py) se encuentra explicado [aquí]().
+El contenido del archivo [Fabric](https://github.com/rubenjo7/IV/blob/master/fabfile.py) se encuentra explicado [aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/FABRIC.md#contenido-del-fichero-fabfilepy).
 
 ###Supervisor:
 
