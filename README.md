@@ -1,5 +1,5 @@
 # IV    [![Telegram.me](http://lelb.net/wp-content/uploads/2016/01/telegram-icon-e1453881760594.png)](https://telegram.me/p_deportivas_bot)
-[![Build Status](https://travis-ci.org/rubenjo7/IV.svg?branch=master)](https://travis-ci.org/rubenjo7/IV) [![Heroku Deploy](https://www.herokucdn.com/deploy/button.svg)](https://pdeportivasbot.herokuapp.com/) [![Docker](https://camo.githubusercontent.com/8a4737bc02fcfeb36a2d7cfb9d3e886e9baf37ad/687474703a2f2f693632382e70686f746f6275636b65742e636f6d2f616c62756d732f7575362f726f6d696c67696c646f2f646f636b657269636f6e5f7a7073776a3369667772772e706e67)](https://hub.docker.com/r/rubenjo7/iv/)
+[![Build Status](https://travis-ci.org/rubenjo7/IV.svg?branch=master)](https://travis-ci.org/rubenjo7/IV) [![Heroku Deploy](https://www.herokucdn.com/deploy/button.svg)](https://pdeportivasbot.herokuapp.com/) [![Docker](https://camo.githubusercontent.com/8a4737bc02fcfeb36a2d7cfb9d3e886e9baf37ad/687474703a2f2f693632382e70686f746f6275636b65742e636f6d2f616c62756d732f7575362f726f6d696c67696c646f2f646f636b657269636f6e5f7a7073776a3369667772772e706e67)](https://hub.docker.com/r/rubenjo7/iv/) [![Azure](http://azuredeploy.net/deploybutton.png)](http://pdeportivasbot.cloudapp.net/)
 
 Repositorio de la asignatura Infraestructura Virtual
 
@@ -15,18 +15,15 @@ Bot para Telegram. Este bot será para llevar las estadísticas de una peña dep
 Para la realización de la practica, en principio necesitare:
 
 * Tener instalado los paquetes necesarios para que phyton funcione correctamente.
-* Una base de datos para almacenar los datos necesarios, como en esta practica usaré heroku, para desplegar mi base de datos he usado la que por defecto viene en heroku, PostGreSQL.
+* Una base de datos para almacenar los datos necesarios, PostGreSQL.
 * Uso de la API TELEBOT --> pyTelegramBotAPI versión 2.1.7
-* pip versión 8.1.2
+* pip versión 9.0.1
 * pyOpenSSL versión 16.2.0
-* Desplegar bot en la nube -->  [arubacloud](https://www.arubacloud.es/vps/tipos-virtual-private-server.aspx).
 * Heroku.
 * Monitorización.
 * TravisCI para realizar test continuos.
 * DockerHub, para permitir a los usuarios compartir las imágenes construidas.
-
-En principio pongo los que creo que voy a utilizar, esta lista se ampliará si necesitase usar algo más.
-
+* Azure, para desplegar el bot en un IaaS.
 
 ###Integración continua:
 
@@ -43,13 +40,13 @@ Para la integración continua se ha usado Travis-CI para realizar los tests. Par
 El makefile que he creado para hacer las instalaciones automáticamente y los test es:
 
     install:
-    	pip install -r requirements.txt
+      pip install -r requirements.txt
 
     test:
-    	python test.py
+      cd p_deportivas_bot && python test_p_deportivas_bot.py
 
     ejecutar:
-    	python p_deportivas_bot.py
+      cd p_deportivas_bot && python p_deportivas_bot.py
 
 Tras esto, Travis comienza a instalar los paquetes necesarios y a ejecutar el test.
 
@@ -114,3 +111,43 @@ Con esto ya tendremos configurado nuestro despliegue atomático y podremos proba
 - La página de DockerHub con mi imagen se encuentra [aquí](https://hub.docker.com/r/rubenjo7/iv/).
 
 - La instalación del contenedor en nuestro ordenador personal la podemos ver [aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/DOCKER.md#instalación-del-contenerdor).
+
+###Vagrant y Ansible:
+
+Usaré Vagrant para crear una máquina Virtual y poder lanzarla en una Infraestructura, en mi caso, Azure. A continuación explicaré los pasos por encima, para verlos más detalladamente es recomendable visitar los enlaces disponibles.
+
+1. Descargamos e instalamos Vagrant. En mi caso, la versión que he usado ha sido la 1.8.6, que se puede descargar de [aquí](https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb).
+2. Instalo el plugin de Azure para Vagrant:
+
+        vagrant plugin install vagrant-azure
+
+3. Realizamos una serie de [configuraciones de Azure]().
+4. Rellenamos el archivo [Vagrantfile](https://github.com/rubenjo7/IV/blob/master/Vagrant%20y%20Ansible/Vagrantfile), cuyo contenido se explica [aquí]().
+5. El Vagrantfile llama al fichero de [Ansible](https://github.com/rubenjo7/IV/blob/master/Vagrant%20y%20Ansible/configuracion_ansible.yml), cuyo contenido se explica [aquí]().
+6. Una vez que tenemos todo esto, podremos lanzar el despliegue de la máquina y su provisionamiento con:
+
+        vagrant up --provider=azure
+
+7. En caso de que solo queramos realizar el provisionamiento usaremos:
+
+          vagrant provision
+
+###Fabric:
+
+Fabric es una biblioteca de Python y una herramienta de línea de comandos para agilizar el uso de SSH para el despliegue de aplicaciones o tareas de administración de sistemas.
+
+Su uso es el siguiente:
+
+    fab -p [CONTRASEÑA] -H [USUARIO]@[HOST] [ORDEN]
+
+En el siguiente [enlace]() se pueden ver algunas pruebas realizadas.
+
+El contenido del archivo [Fabric](https://github.com/rubenjo7/IV/blob/master/fabfile.py) se encuentra explicado [aquí]().
+
+###Supervisor:
+
+He tenido que instalar Supervisord para tener controlado el bot sin tener la necesidad  de mantener la terminal abierta en la ejecución del mismo.
+
+El supervisor es instalado desde el fichero de ansible, donde también configuro el programa para supervisor, además de ejecutarlo.
+
+El archivo para la [configuración del supervisor del bot](https://github.com/rubenjo7/IV/blob/master/p_deportivas_bot.conf) se encuentra explicado [aquí]().
