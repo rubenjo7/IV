@@ -6,7 +6,7 @@ La instalación de ansible es bastante sencilla:
 
     sudo apt-get install ansible
 
-###Contenido ficher [configuracion_ansible.yml](https://github.com/rubenjo7/IV/blob/master/Vagrant%20y%20Ansible/configuracion_ansible.yml):
+###Contenido fichero [configuracion_ansible.yml](https://github.com/rubenjo7/IV/blob/master/Vagrant%20y%20Ansible/configuracion_ansible.yml):
 
 Con "vars" añadimos las variables de entorno que necesitamos para el bot.
 
