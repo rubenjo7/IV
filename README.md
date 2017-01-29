@@ -150,4 +150,4 @@ He tenido que instalar Supervisord para tener controlado el bot sin tener la nec
 
 El supervisor es instalado desde el fichero de ansible, donde también configuro el programa para supervisor, además de ejecutarlo.
 
-El archivo para la [configuración del supervisor del bot](https://github.com/rubenjo7/IV/blob/master/p_deportivas_bot.conf) se encuentra explicado [aquí]().
+El archivo para la [configuración del supervisor del bot](https://github.com/rubenjo7/IV/blob/master/p_deportivas_bot.conf) se encuentra explicado [aquí](https://github.com/rubenjo7/IV/blob/master/Documentacion/SUPERVISOR.md#contenido-del-fichero-p_deportivas_botconf).
