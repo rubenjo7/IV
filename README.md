@@ -121,7 +121,7 @@ Usaré Vagrant para crear una máquina Virtual y poder lanzarla en una Infraestr
 
         vagrant plugin install vagrant-azure
 
-3. Realizamos una serie de [configuraciones de Azure]().
+3. Realizamos una serie de [configuraciones de Azure](https://github.com/rubenjo7/IV/blob/master/Documentacion/AZURE.md).
 4. Rellenamos el archivo [Vagrantfile](https://github.com/rubenjo7/IV/blob/master/Vagrant%20y%20Ansible/Vagrantfile), cuyo contenido se explica [aquí]().
 5. El Vagrantfile llama al fichero de [Ansible](https://github.com/rubenjo7/IV/blob/master/Vagrant%20y%20Ansible/configuracion_ansible.yml), cuyo contenido se explica [aquí]().
 6. Una vez que tenemos todo esto, podremos lanzar el despliegue de la máquina y su provisionamiento con:
