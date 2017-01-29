@@ -1,4 +1,4 @@
-###Tareas del bot:
+#Tareas del bot:
 
 - Inserción de jugadores.
 - Borrado de jugadores por ID.
